@@ -36,17 +36,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        //notification Listenning
-        let notificationName = Notification.Name(rawValue: "CountOnMeNotification")
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationSelector), name: notificationName, object: nil)
-    }
-    
-    @objc func notificationSelector() {
-        textView.text.append(" = \(countOnMeModel.operation)")
-        countOnMeModel.operation = ""
     }
 
+    private func checkIfOperatorCanBeAdd(_ closure: () -> Void) {
+        if canAddOperator {
+            if expressionHaveResult {
+                textView.text = countOnMeModel.operation
+            }
+            closure()
+        } else {
+            AlertViewController.shared.ShowAlertController(message: "Une opérateur est déja mis !", viewController: self)
+        }
+    }
+    
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else {
@@ -54,29 +56,41 @@ class ViewController: UIViewController {
         }
         if expressionHaveResult {
             textView.text = ""
+            countOnMeModel.operation = ""
         }
         textView.text.append(numberText)
         countOnMeModel.addNumber(numberText)
     }
     
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        if canAddOperator {
+        checkIfOperatorCanBeAdd {
             textView.text.append(" + ")
             countOnMeModel.addAditionOperator()
-        } else {
-            AlertViewController.shared.ShowAlertController(message: "Une opérateur est déja mis !", viewController: self)
         }
     }
     
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        if canAddOperator {
+        checkIfOperatorCanBeAdd {
             textView.text.append(" - ")
             countOnMeModel.addSubstractionOperator()
-        } else {
-            AlertViewController.shared.ShowAlertController(message: "Un opérateur est déja mis !", viewController: self)
         }
+            
     }
 
+    @IBAction func tappedDivisionButton(_ sender: UIButton) {
+        checkIfOperatorCanBeAdd {
+            textView.text.append(" / ")
+            countOnMeModel.addDivisionOperator()
+        }
+    }
+    
+    @IBAction func tappedMultiplicationButton(_ sender: UIButton) {
+        checkIfOperatorCanBeAdd {
+            textView.text.append(" x ")
+            countOnMeModel.addMultiplicationOperator()
+        }
+    }
+    
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         guard expressionIsCorrect else {
             return AlertViewController.shared.ShowAlertController(message: "Entrez une expression correcte !", viewController: self)
@@ -85,25 +99,8 @@ class ViewController: UIViewController {
         guard expressionHaveEnoughElement else {
             return AlertViewController.shared.ShowAlertController(message: "Démarrez un nouveau calcul !", viewController: self)
         }
-        
         countOnMeModel.buttonEqualTaped()
-    }
-    @IBAction func tappedDivisionButton(_ sender: UIButton) {
-        if canAddOperator {
-            textView.text.append(" / ")
-            countOnMeModel.addDivisionOperator()
-        } else {
-            AlertViewController.shared.ShowAlertController(message: "Un opérateur est déja mis !", viewController: self)
-        }
-    }
-    
-    @IBAction func tappedMultiplicationButton(_ sender: UIButton) {
-        if canAddOperator {
-            textView.text.append(" x ")
-            countOnMeModel.addMultiplicationOperator()
-        } else {
-            AlertViewController.shared.ShowAlertController(message: "Un opérateur est déja mis !", viewController: self)
-        }
+        textView.text.append(" = \(countOnMeModel.operation)")
     }
 }
 

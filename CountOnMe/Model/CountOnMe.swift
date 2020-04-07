@@ -16,10 +16,6 @@ class CountOnMe{
     
     func buttonEqualTaped() {
         makeFinalOperation()
-        //create notification
-        let notificationName = Notification.Name(rawValue: "CountOnMeNotification")
-        let notification = Notification(name: notificationName)
-        NotificationCenter.default.post(notification)
     }
     
     func addAditionOperator() {
