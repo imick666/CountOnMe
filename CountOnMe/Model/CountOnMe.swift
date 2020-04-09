@@ -7,37 +7,103 @@
 //
 
 import Foundation
+
 class CountOnMe{
-    var operation = ""
+    // MARK: - Proprieties
+    var operation = "" {
+        didSet {
+            sendNotification("currentCalcul")
+        }
+    }
     
+    //convert operation in array
     var elements: [String] {
         return operation.split(separator: " ").map { "\($0)" }
     }
     
+    // Error check computed variables
+    private var expressionIsCorrect: Bool {
+        return elements.last != "+" && elements.last != "-"
+            && elements.last != "/" && elements.last != "*"
+    }
+    
+    private var expressionHaveEnoughElement: Bool {
+        return elements.count >= 3
+    }
+    
+    private var canAddOperator: Bool {
+        return elements.last != "+" && elements.last != "-"
+            && elements.last != "/" && elements.last != "*"
+    }
+    
+    private var expressionHaveResult: Bool {
+        return elements.firstIndex(of: "=") != nil
+    }
+    
+    // MARK: - Methodes
     func buttonEqualTaped() {
+        guard expressionIsCorrect else {
+            sendNotification("alertExpression")
+            return
+        }
+        guard expressionHaveEnoughElement else {
+            sendNotification("alertNewCalcul")
+            return
+        }
         makeFinalOperation()
     }
     
     func addAditionOperator() {
-        operation.append(" + ")
+        checkIfOperatorCanBeAdd {
+            operation.append(" + ")
+        }
     }
     
     func addSubstractionOperator() {
-        operation.append(" - ")
+        checkIfOperatorCanBeAdd {
+            operation.append(" - ")
+        }
+        
     }
     
     func addMultiplicationOperator() {
-        operation.append(" * ")
+        checkIfOperatorCanBeAdd {
+            operation.append(" * ")
+        }
     }
     
     func addDivisionOperator() {
-        operation.append(" / ")
+        checkIfOperatorCanBeAdd {
+            operation.append(" / ")
+        }
     }
     
     func addNumber(_ number: String){
+        if expressionHaveResult {
+            operation = ""
+        }
         operation.append(number)
     }
     
+    // MARK: - Private Methodes
+    //create norification sender
+    private func sendNotification(_ name: String) {
+        let notificationName = Notification.Name(name)
+        let notification = Notification(name: notificationName)
+        NotificationCenter.default.post(notification)
+    }
+    // check if an operartor can be add
+    private func checkIfOperatorCanBeAdd(_ closure: () -> Void) {
+        if canAddOperator {
+            if expressionHaveResult {
+                operation = elements.last!
+            }
+            closure()
+        } else {
+            sendNotification("alertOperator")
+        }
+    }
+    //make operation when "=" pressed
     private func makeFinalOperation() {
         var finalResult = elements
 
@@ -52,12 +118,13 @@ class CountOnMe{
            case "-": result = left - right
            case "/": result = left / right
            case "*": result = left * right
+           case "=": return
            default: fatalError("Unknown operator !")
            }
            
            finalResult = Array(finalResult.dropFirst(3))
            finalResult.insert("\(result)", at: 0)
         }
-        operation = finalResult.first!
+        operation.append(" = \(finalResult.first!) ")
     }
 }

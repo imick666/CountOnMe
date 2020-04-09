@@ -14,39 +14,39 @@ class ViewController: UIViewController {
     
     let countOnMeModel = CountOnMe()
     
-    // Error check computed variables
-    var expressionIsCorrect: Bool {
-        return countOnMeModel.elements.last != "+" && countOnMeModel.elements.last != "-"
-    }
-    
-    var expressionHaveEnoughElement: Bool {
-        return countOnMeModel.elements.count >= 3
-    }
-    
-    var canAddOperator: Bool {
-        return countOnMeModel.elements.last != "+" && countOnMeModel.elements.last != "-" &&
-            countOnMeModel.elements.last != "/" && countOnMeModel.elements.last != "*"
-    }
-    
-    var expressionHaveResult: Bool {
-        return textView.text.firstIndex(of: "=") != nil
-    }
     
     // View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        receiveNotification("currentCalcul")
+        receiveNotification("alertOperator")
+        receiveNotification("alertExpression")
+        receiveNotification("alertNewCalcul")
     }
-
-    private func checkIfOperatorCanBeAdd(_ closure: () -> Void) {
-        if canAddOperator {
-            if expressionHaveResult {
-                textView.text = countOnMeModel.operation
-            }
-            closure()
-        } else {
-            AlertViewController.shared.ShowAlertController(message: "Une opérateur est déja mis !", viewController: self)
-        }
+    
+    // MARK: - Notification Selectors
+    @objc func alertNewCalcul() {
+        AlertViewController.shared.ShowAlertController(message: "Démarrez un nouveau calcul !", viewController: self)
+    }
+    
+    @objc func alertExpression() {
+        AlertViewController.shared.ShowAlertController(message: "Entrez une expression correcte !", viewController: self)
+    }
+    
+    @objc func currentCalcul() {
+        textView.text = countOnMeModel.operation
+    }
+    
+    @objc func alertOperator() {
+        AlertViewController.shared.ShowAlertController(message: "Une opérateur est déja mis !", viewController: self)
+    }
+    
+    //crate notification
+    private func receiveNotification(_ name: String) {
+        let notificationName = Notification.Name(name)
+        let selector = Selector((name))
+        NotificationCenter.default.addObserver(self, selector: selector, name: notificationName, object: nil)
     }
     
     // View actions
@@ -54,53 +54,27 @@ class ViewController: UIViewController {
         guard let numberText = sender.title(for: .normal) else {
             return
         }
-        if expressionHaveResult {
-            textView.text = ""
-            countOnMeModel.operation = ""
-        }
-        textView.text.append(numberText)
         countOnMeModel.addNumber(numberText)
     }
     
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        checkIfOperatorCanBeAdd {
-            textView.text.append(" + ")
-            countOnMeModel.addAditionOperator()
-        }
+        countOnMeModel.addAditionOperator()
     }
     
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        checkIfOperatorCanBeAdd {
-            textView.text.append(" - ")
-            countOnMeModel.addSubstractionOperator()
-        }
-            
+        countOnMeModel.addSubstractionOperator()
     }
 
     @IBAction func tappedDivisionButton(_ sender: UIButton) {
-        checkIfOperatorCanBeAdd {
-            textView.text.append(" / ")
-            countOnMeModel.addDivisionOperator()
-        }
+        countOnMeModel.addDivisionOperator()
     }
     
     @IBAction func tappedMultiplicationButton(_ sender: UIButton) {
-        checkIfOperatorCanBeAdd {
-            textView.text.append(" x ")
-            countOnMeModel.addMultiplicationOperator()
-        }
+        countOnMeModel.addMultiplicationOperator()
     }
     
     @IBAction func tappedEqualButton(_ sender: UIButton) {
-        guard expressionIsCorrect else {
-            return AlertViewController.shared.ShowAlertController(message: "Entrez une expression correcte !", viewController: self)
-        }
-
-        guard expressionHaveEnoughElement else {
-            return AlertViewController.shared.ShowAlertController(message: "Démarrez un nouveau calcul !", viewController: self)
-        }
         countOnMeModel.buttonEqualTaped()
-        textView.text.append(" = \(countOnMeModel.operation)")
     }
 }
 

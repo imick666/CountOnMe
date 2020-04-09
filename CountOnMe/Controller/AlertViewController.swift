@@ -11,6 +11,7 @@ import UIKit
 class AlertViewController: NSObject {
 
     static let shared = AlertViewController()
+    private override init() {}
     
     func ShowAlertController (message: String, viewController: UIViewController) {
         let alertVC = UIAlertController(title: "Zéro!", message: message, preferredStyle: .alert)
