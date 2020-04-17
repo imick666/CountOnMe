@@ -24,11 +24,17 @@ class ViewController: UIViewController {
 
     // MARK: - Notification Selectors
     @objc func currentCalcul() {
-        textView.text = countOnMeModel.operation
+        var currentCalcul: String {
+            return countOnMeModel.operation
+        }
+        textView.text = currentCalcul
     }
 
     @objc func errorMessage() {
-        AlertViewController.shared.showAlertController(message: countOnMeModel.errorMessage, viewController: self)
+        var errorMessage: String {
+            return countOnMeModel.errorMessage
+        }
+        AlertViewController.shared.showAlertController(message: errorMessage, viewController: self)
     }
 
     //crate notification
@@ -46,19 +52,19 @@ class ViewController: UIViewController {
     }
 
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
-        countOnMeModel.addAditionOperator()
+        countOnMeModel.addOperator(" + ")
     }
 
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-        countOnMeModel.addSubstractionOperator()
+        countOnMeModel.addOperator(" - ")
     }
 
     @IBAction func tappedDivisionButton(_ sender: UIButton) {
-        countOnMeModel.addDivisionOperator()
+        countOnMeModel.addOperator(" / ")
     }
 
     @IBAction func tappedMultiplicationButton(_ sender: UIButton) {
-        countOnMeModel.addMultiplicationOperator()
+        countOnMeModel.addOperator(" x ")
     }
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {

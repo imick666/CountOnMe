@@ -63,27 +63,9 @@ class CountOnMe {
         makeFinalOperation()
     }
 
-    func addAditionOperator() {
+    func addOperator(_ operatorToAdd: String) {
         checkIfOperatorCanBeAdd {
-            operation.append(" + ")
-        }
-    }
-
-    func addSubstractionOperator() {
-        checkIfOperatorCanBeAdd {
-            operation.append(" - ")
-        }
-    }
-
-    func addMultiplicationOperator() {
-        checkIfOperatorCanBeAdd {
-            operation.append(" * ")
-        }
-    }
-
-    func addDivisionOperator() {
-        checkIfOperatorCanBeAdd {
-            operation.append(" / ")
+            operation.append(operatorToAdd)
         }
     }
 
@@ -125,7 +107,7 @@ class CountOnMe {
            case "+": result = left + right
            case "-": result = left - right
            case "/": result = left / right
-           case "*": result = left * right
+           case "x": result = left * right
            case "=": return
            default: fatalError("Unknown operator !")
            }

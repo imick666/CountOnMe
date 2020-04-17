@@ -20,7 +20,7 @@ class CountOnMeTests: XCTestCase {
     func testGivenFirstElementIs3withfunc_WhenSub3withfunc_ThenResultIs0() {
         countOnMe.addNumber("3")
 
-        countOnMe.addSubstractionOperator()
+        countOnMe.addOperator(" - ")
         countOnMe.addNumber("3")
 
         countOnMe.buttonEqualTaped()
@@ -31,7 +31,7 @@ class CountOnMeTests: XCTestCase {
         countOnMe.addNumber("3")
 
         countOnMe.addNumber("3")
-        countOnMe.addAditionOperator()
+        countOnMe.addOperator(" + ")
         countOnMe.addNumber("0")
 
         countOnMe.buttonEqualTaped()
@@ -41,7 +41,7 @@ class CountOnMeTests: XCTestCase {
     func testGivenFirstElementIs3_WhenMultiplyBy3_ThenResultIs9() {
         countOnMe.addNumber("3")
 
-        countOnMe.addMultiplicationOperator()
+        countOnMe.addOperator(" x ")
         countOnMe.addNumber("3")
 
         countOnMe.buttonEqualTaped()
@@ -51,7 +51,7 @@ class CountOnMeTests: XCTestCase {
     func testGivenFirstElementIs9_WhenDiviseBy3_ThenResultIs3() {
         countOnMe.addNumber("9")
 
-        countOnMe.addDivisionOperator()
+        countOnMe.addOperator(" / ")
         countOnMe.addNumber("3")
 
         countOnMe.buttonEqualTaped()
