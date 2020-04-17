@@ -73,6 +73,10 @@ class CountOnMe {
         if expressionHaveResult {
             operation = ""
         }
+        if elements.last == "/" && number == "0" {
+            errorMessage = "You can't divise by 0"
+            return
+        }
         operation.append(number)
     }
 
