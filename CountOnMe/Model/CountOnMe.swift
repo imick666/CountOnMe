@@ -74,7 +74,7 @@ class CountOnMe {
             operation = ""
         }
         if elements.last == "/" && number == "0" {
-            errorMessage = "You can't divise by 0"
+            errorMessage = "Vous ne pouvez pas diviser par 0"
             return
         }
         operation.append(number)

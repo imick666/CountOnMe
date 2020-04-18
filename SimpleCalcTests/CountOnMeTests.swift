@@ -57,4 +57,20 @@ class CountOnMeTests: XCTestCase {
         countOnMe.buttonEqualTaped()
         XCTAssertEqual(countOnMe.elements.last, "3")
     }
+
+    func testNotificationWhenOperationModified() {
+        expectation(forNotification: .currentCalcul, object: nil, handler: nil)
+        
+        countOnMe.addNumber("9")
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testNotificationWhenErrorMessage() {
+        expectation(forNotification: .errorMessage, object: nil, handler: nil)
+        
+        countOnMe.errorMessage = "ceci est une erreur"
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
 }
