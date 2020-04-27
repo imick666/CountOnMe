@@ -24,7 +24,7 @@ class CountOnMeTests: XCTestCase {
         countOnMe.addNumber("3")
 
         countOnMe.buttonEqualTaped()
-        XCTAssertEqual(countOnMe.elements.last, "0")
+        XCTAssertEqual(countOnMe.elements.last, "0.0")
     }
 
     func testGivenFirstElementIs3WithcFunc_WhenAdd3WithFuncAndAdd0WithFunc_ThenResultIs33() {
@@ -35,7 +35,7 @@ class CountOnMeTests: XCTestCase {
         countOnMe.addNumber("0")
 
         countOnMe.buttonEqualTaped()
-        XCTAssertEqual(countOnMe.elements.last, "33")
+        XCTAssertEqual(countOnMe.elements.last, "33.0")
     }
 
     func testGivenFirstElementIs3_WhenMultiplyBy3_ThenResultIs9() {
@@ -45,7 +45,7 @@ class CountOnMeTests: XCTestCase {
         countOnMe.addNumber("3")
 
         countOnMe.buttonEqualTaped()
-        XCTAssertEqual(countOnMe.elements.last, "9")
+        XCTAssertEqual(countOnMe.elements.last, "9.0")
     }
 
     func testGivenFirstElementIs9_WhenDiviseBy3_ThenResultIs3() {
@@ -55,22 +55,60 @@ class CountOnMeTests: XCTestCase {
         countOnMe.addNumber("3")
 
         countOnMe.buttonEqualTaped()
-        XCTAssertEqual(countOnMe.elements.last, "3")
+        XCTAssertEqual(countOnMe.elements.last, "3.0")
+    }
+
+    func testGivenFirstElementIs10_WhenDiviseBy3_ThenResultIs3Dot33() {
+        countOnMe.addNumber("10")
+
+        countOnMe.addOperator(" / ")
+        countOnMe.addNumber("3")
+
+        countOnMe.buttonEqualTaped()
+        XCTAssertEqual(countOnMe.elements.last, "3.33")
+    }
+
+    func testGivenFirstElementIs10_WhenDiviseBy3_ThenResultIs3Dot33AndResetPressedEqualNil() {
+        countOnMe.addNumber("10")
+
+        countOnMe.addOperator(" / ")
+        countOnMe.addNumber("3")
+        countOnMe.buttonEqualTaped()
+        countOnMe.resetCalcul()
+
+        XCTAssertEqual(countOnMe.elements.last, nil)
     }
 
     func testNotificationWhenOperationModified() {
         expectation(forNotification: .currentCalcul, object: nil, handler: nil)
-        
+
         countOnMe.addNumber("9")
-        
+
         waitForExpectations(timeout: 5, handler: nil)
     }
-    
+
     func testNotificationWhenErrorMessage() {
         expectation(forNotification: .errorMessage, object: nil, handler: nil)
-        
+
         countOnMe.errorMessage = "ceci est une erreur"
-        
+
         waitForExpectations(timeout: 5, handler: nil)
+    }
+
+    func testGivenFirstElementIs10_WhenDiviseByNil_ThenErrorMessageShouldAppear() {
+        countOnMe.addNumber("10")
+
+        countOnMe.addOperator(" / ")
+        countOnMe.buttonEqualTaped()
+
+        XCTAssertNotEqual(countOnMe.errorMessage, "")
+    }
+
+    func testGivenFirstElementIs10_nothing_ThenErrorMessageShouldAppear() {
+        countOnMe.addNumber("10")
+
+        countOnMe.buttonEqualTaped()
+
+        XCTAssertNotEqual(countOnMe.errorMessage, "")
     }
 }
