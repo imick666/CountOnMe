@@ -23,9 +23,9 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ewl-T3-zHA">
                                 <rect key="frame" x="10" y="54" width="394" height="798"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dM3-W6-Rl9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dM3-W6-Rl9">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="292"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="50"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -35,7 +35,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oNF-oR-mK9">
                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="87"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iA-c8-Wj0" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iA-c8-Wj0" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="292" height="87"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
@@ -51,7 +51,7 @@
                                                         <rect key="frame" x="307" y="0.0" width="87" height="87"/>
                                                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="hMx-zA-Tza" secondAttribute="height" multiplier="1:1" id="UQa-qu-n47"/>
+                                                            <constraint firstAttribute="width" secondItem="hMx-zA-Tza" secondAttribute="height" multiplier="1:1" id="wKe-Lu-GeT"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="/">
@@ -63,7 +63,7 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="tBU-HK-ASd">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="tBU-HK-ASd">
                                                 <rect key="frame" x="0.0" y="102" width="394" height="87.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W04-n1-Wen" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
@@ -124,7 +124,7 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3ZR-Bx-I3K">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3ZR-Bx-I3K">
                                                 <rect key="frame" x="0.0" y="204.5" width="394" height="87"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMJ-tH-k5u" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
@@ -181,12 +181,11 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="tappedOperatorButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="nkq-h9-Deb"/>
-                                                            <action selector="tappedSubstractionButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="KVX-AF-NVM"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZEk-7R-wdf">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZEk-7R-wdf">
                                                 <rect key="frame" x="0.0" y="306.5" width="394" height="87.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-av-x4n" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
@@ -251,7 +250,7 @@
                                                 <rect key="frame" x="0.0" y="409" width="394" height="87"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD6-ul-r3f" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="292" height="87"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="189.5" height="87"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="0">
@@ -259,6 +258,20 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="tappedNumberButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="8QE-Kp-ela"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wt4-o4-fVH" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
+                                                        <rect key="frame" x="204.5" y="0.0" width="87.5" height="87"/>
+                                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="wt4-o4-fVH" secondAttribute="height" multiplier="1:1" id="Sbm-xI-E9L"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                        <state key="normal" title=".">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="ujK-Hn-eF1"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMj-Of-bCU" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
@@ -293,6 +306,7 @@
                     </view>
                     <connections>
                         <outlet property="calculLabel" destination="dM3-W6-Rl9" id="exy-JJ-2bt"/>
+                        <outlet property="resetButton" destination="9iA-c8-Wj0" id="lru-LK-LIZ"/>
                         <outletCollection property="buttonStyle" destination="hMx-zA-Tza" collectionClass="NSMutableArray" id="awJ-X9-X2p"/>
                         <outletCollection property="buttonStyle" destination="9iA-c8-Wj0" collectionClass="NSMutableArray" id="eQl-xv-Kp4"/>
                         <outletCollection property="buttonStyle" destination="EPx-3X-zTa" collectionClass="NSMutableArray" id="tmM-9D-IHt"/>
@@ -309,6 +323,7 @@
                         <outletCollection property="buttonStyle" destination="DQU-P5-55X" collectionClass="NSMutableArray" id="tU5-hr-H4u"/>
                         <outletCollection property="buttonStyle" destination="qMj-Of-bCU" collectionClass="NSMutableArray" id="KkV-eY-FKl"/>
                         <outletCollection property="buttonStyle" destination="YD6-ul-r3f" collectionClass="NSMutableArray" id="c8W-uL-ZHg"/>
+                        <outletCollection property="buttonStyle" destination="wt4-o4-fVH" collectionClass="NSMutableArray" id="5T1-RM-oGf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XP-3c-sJZ" sceneMemberID="firstResponder"/>

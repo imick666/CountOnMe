@@ -9,16 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+
     // MARK: - Outlets
 
     @IBOutlet weak var calculLabel: UILabel!
     @IBOutlet var buttonStyle: [RoundButton]!
+    @IBOutlet weak var resetButton: RoundButton!
 
     // MARK: - Properties
 
     let countOnMeModel = CountOnMe()
 
-    // View Life cycles
+    // MARK: - View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         for button in buttonStyle {
@@ -29,12 +31,24 @@ class ViewController: UIViewController {
         receiveNotification(.errorMessage)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        countOnMeModel.operation = "0"
+    }
+
     // MARK: - Notifications Selectors
+
     @objc func currentCalcul() {
         var currentCalcul: String {
             return countOnMeModel.operation
         }
         calculLabel.text = currentCalcul
+
+        if currentCalcul == "0" {
+            resetButton.setTitle("AC", for: .normal)
+        } else {
+            resetButton.setTitle("C", for: .normal)
+        }
     }
 
     @objc func errorMessage() {
@@ -46,7 +60,7 @@ class ViewController: UIViewController {
 
     // MARK: - Privaet Methodes
 
-    //crate notification
+    //create notification
     private func receiveNotification(_ name: Notification.Name) {
         let selector = Selector((name.rawValue))
         NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
