@@ -23,9 +23,6 @@ class ViewController: UIViewController {
     // MARK: - View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        for button in buttonStyle {
-            button.setUpButton()
-        }
         // Do any additional setup after loading the view.
         receiveNotification(.currentCalcul)
         receiveNotification(.errorMessage)
@@ -34,13 +31,23 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         countOnMeModel.operation = "0"
+        roundedButtonUpdate()
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        coordinator.animate(alongsideTransition: { (_) in
+            self.roundedButtonUpdate()
+        })
+    }
     // MARK: - Notifications Selectors
 
     @objc func currentCalcul() {
         var currentCalcul: String {
-            return countOnMeModel.operation
+            let operation = countOnMeModel.operation
+            let format = operation.replacingOccurrences(of: ".0", with: "")
+            return format.replacingOccurrences(of: ".", with: ",")
         }
         calculLabel.text = currentCalcul
 
@@ -60,6 +67,13 @@ class ViewController: UIViewController {
 
     // MARK: - Privaet Methodes
 
+    //Update rounded button Style
+    private func roundedButtonUpdate() {
+        for button in buttonStyle {
+            button.setUpButton()
+        }
+    }
+
     //create notification
     private func receiveNotification(_ name: Notification.Name) {
         let selector = Selector((name.rawValue))
@@ -69,7 +83,10 @@ class ViewController: UIViewController {
     // MARK: - Actions
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
-        guard let numberText = sender.title(for: .normal) else { return }
+        guard var numberText = sender.title(for: .normal) else { return }
+        if numberText == "," {
+            numberText = "."
+        }
         countOnMeModel.addNumber(numberText)
     }
 

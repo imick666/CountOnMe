@@ -61,11 +61,12 @@ class CountOnMe {
         if !expressionIsCorrect {
             errorMessage = "Entrez une expression correcte !"
             resetCalcul()
-        } else if !expressionHaveEnoughElement {
+        } else if !expressionHaveEnoughElement || expressionHaveResult {
             errorMessage = "Démarrez un nouveau calcul !"
             resetCalcul()
+        } else {
+            pickUpOperationElements()
         }
-        pickUpOperationElements()
     }
 
     func resetCalcul() {
@@ -140,7 +141,8 @@ class CountOnMe {
             finalResult = Array(finalResult.dropFirst(3))
             finalResult.insert("\(result.roundedWithTowDecimal())", at: 0)
         }
-        operation.append(" = \(finalResult.first!) ")
+
+        operation.append(" = \(finalResult.first!)")
     }
 
     private func calculate(_ left: Double, _ operand: String, _ right: Double) -> Double {

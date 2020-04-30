@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eqK-jh-KKu">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -20,11 +20,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ewl-T3-zHA">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ewl-T3-zHA">
                                 <rect key="frame" x="10" y="54" width="394" height="798"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dM3-W6-Rl9">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="292"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="287"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="FrG-vH-UzD"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="50"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -50,9 +53,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMx-zA-Tza" userLabel="/" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="307" y="0.0" width="87" height="87"/>
                                                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="hMx-zA-Tza" secondAttribute="height" multiplier="1:1" id="wKe-Lu-GeT"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="÷">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,19 +63,24 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="tBU-HK-ASd">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="tBU-HK-ASd">
                                                 <rect key="frame" x="0.0" y="102" width="394" height="87.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W04-n1-Wen" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="87.5" height="87.5"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="W04-n1-Wen" secondAttribute="height" multiplier="1:1" id="4iX-SE-JMU"/>
+                                                            <constraint firstAttribute="width" secondItem="W04-n1-Wen" secondAttribute="height" multiplier="1:1" id="zQR-GH-Mfa"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <variation key="heightClass=compact">
+                                                            <mask key="constraints">
+                                                                <exclude reference="zQR-GH-Mfa"/>
+                                                            </mask>
+                                                        </variation>
                                                         <connections>
                                                             <action selector="tappedNumberButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="Ovc-Qq-WYV"/>
                                                         </connections>
@@ -83,9 +88,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPx-3X-zTa" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="102.5" y="0.0" width="87" height="87.5"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="EPx-3X-zTa" secondAttribute="height" multiplier="1:1" id="Trr-D3-Jvp"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,9 +99,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hkr-13-i1X" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="204.5" y="0.0" width="87.5" height="87.5"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="Hkr-13-i1X" secondAttribute="height" multiplier="1:1" id="r19-8c-2Z4"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -111,9 +110,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOY-SH-Qdf" userLabel="*" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="307" y="0.0" width="87" height="87.5"/>
                                                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="LOY-SH-Qdf" secondAttribute="height" multiplier="1:1" id="ScY-GI-9fi"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="x">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -124,15 +120,12 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3ZR-Bx-I3K">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3ZR-Bx-I3K">
                                                 <rect key="frame" x="0.0" y="204.5" width="394" height="87"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMJ-tH-k5u" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="87.5" height="87"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="tMJ-tH-k5u" secondAttribute="height" multiplier="1:1" id="AaF-IU-PJO"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -144,9 +137,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lad-SR-mqj" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="102.5" y="0.0" width="87" height="87"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="lad-SR-mqj" secondAttribute="height" multiplier="1:1" id="PbM-qp-slz"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -158,9 +148,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S66-ub-JAX" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="204.5" y="0.0" width="87.5" height="87"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="S66-ub-JAX" secondAttribute="height" multiplier="1:1" id="pyc-yR-597"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -172,9 +159,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zr-HC-0N9" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="307" y="0.0" width="87" height="87"/>
                                                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="3zr-HC-0N9" secondAttribute="height" multiplier="1:1" id="Urc-cS-vmD"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="-">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -185,15 +169,12 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZEk-7R-wdf">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZEk-7R-wdf">
                                                 <rect key="frame" x="0.0" y="306.5" width="394" height="87.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-av-x4n" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="87.5" height="87.5"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="Raa-av-x4n" secondAttribute="height" multiplier="1:1" id="eQ4-2b-mKt"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -205,9 +186,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jd7-ld-hSU" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="102.5" y="0.0" width="87" height="87.5"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="jd7-ld-hSU" secondAttribute="height" multiplier="1:1" id="gLk-mI-sgc"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -219,9 +197,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-zf-T0y" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="204.5" y="0.0" width="87.5" height="87.5"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="UDN-zf-T0y" secondAttribute="height" multiplier="1:1" id="yb0-vv-KTI"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -233,9 +208,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQU-P5-55X" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="307" y="0.0" width="87" height="87.5"/>
                                                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="DQU-P5-55X" secondAttribute="height" multiplier="1:1" id="rN4-77-Muu"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="+">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -263,11 +235,8 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wt4-o4-fVH" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="204.5" y="0.0" width="87.5" height="87"/>
                                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="wt4-o4-fVH" secondAttribute="height" multiplier="1:1" id="Sbm-xI-E9L"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                        <state key="normal" title=".">
+                                                        <state key="normal" title=",">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -277,9 +246,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMj-Of-bCU" customClass="RoundButton" customModule="CountOnMe" customModuleProvider="target">
                                                         <rect key="frame" x="307" y="0.0" width="87" height="87"/>
                                                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="qMj-Of-bCU" secondAttribute="height" multiplier="1:1" id="fxD-1w-ylE"/>
-                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <state key="normal" title="=">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -289,8 +255,15 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="qMj-Of-bCU" firstAttribute="width" secondItem="wt4-o4-fVH" secondAttribute="width" id="PcC-lm-6pf"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="LOY-SH-Qdf" firstAttribute="width" secondItem="hMx-zA-Tza" secondAttribute="width" id="Yfw-Gd-WFg"/>
+                                            <constraint firstItem="qMj-Of-bCU" firstAttribute="width" secondItem="DQU-P5-55X" secondAttribute="width" id="rvZ-kN-BND"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
