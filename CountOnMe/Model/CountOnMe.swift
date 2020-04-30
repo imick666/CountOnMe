@@ -53,7 +53,7 @@ class CountOnMe {
     }
 
     private var calculIsNull: Bool {
-        return operation == "0"
+        return operation == "0" || operation == ""
     }
 
     // MARK: - Methodes
@@ -82,7 +82,9 @@ class CountOnMe {
     }
 
     func addNumber(_ number: String) {
-        if expressionHaveResult || calculIsNull && number != "." {
+        if calculIsNull && number == "." {
+            operation = "0"
+        } else if expressionHaveResult || calculIsNull {
             operation = ""
         }
         if elements.last == "÷" && number == "0" {

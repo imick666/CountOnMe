@@ -130,6 +130,14 @@ class CountOnMeTests: XCTestCase {
 
         XCTAssertEqual(countOnMe.operation, "4.0 ÷ ")
     }
+
+    func testGivenNothing_WhenTypingDotAnd2_ThenOperationShoulBe0Dot2() {
+
+        countOnMe.addNumber(".")
+        countOnMe.addNumber("2")
+
+        XCTAssertEqual(countOnMe.operation, "0.2")
+    }
     // MARK: - Notification Test
 
     func testNotificationWhenOperationModified() {
