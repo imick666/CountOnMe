@@ -40,7 +40,7 @@ class CountOnMe {
     // Error check computed variables
     private var expressionIsCorrect: Bool {
         return elements.last != "+" && elements.last != "-"
-            && elements.last != "/" && elements.last != "x"
+            && elements.last != "÷" && elements.last != "x"
     }
 
     private var expressionHaveEnoughElement: Bool {
@@ -83,7 +83,7 @@ class CountOnMe {
         if expressionHaveResult || calculIsNull && number != "." {
             operation = ""
         }
-        if elements.last == "/" && number == "0" {
+        if elements.last == "÷" && number == "0" {
             errorMessage = "Vous ne pouvez pas diviser par 0"
             resetCalcul()
         }
@@ -115,8 +115,8 @@ class CountOnMe {
         var finalResult = elements
 
         //multiplication and division priority
-        while finalResult.contains("x") || finalResult.contains("/") {
-            guard let index = finalResult.firstIndex(where: { $0 == "x" || $0 == "/" }) else { return } //Que veut dire "$0"???!!!
+        while finalResult.contains("x") || finalResult.contains("÷") {
+            guard let index = finalResult.firstIndex(where: { $0 == "x" || $0 == "÷" }) else { return } //Que veut dire "$0"???!!!
 
             guard let left = Double(finalResult[index - 1]) else { return }
             let operand = finalResult[index]
@@ -147,7 +147,7 @@ class CountOnMe {
         switch operand {
         case "+": return left + right
         case "-": return left - right
-        case "/": return left / right
+        case "÷": return left / right
         case "x": return left * right
         default: fatalError("Unknown operator !")
         }

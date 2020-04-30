@@ -53,7 +53,7 @@ class CountOnMeTests: XCTestCase {
     func testGiven10_WhenDividedBy3_ThenResultIs3Dot33() {
         countOnMe.addNumber("10")
 
-        countOnMe.addOperator("/")
+        countOnMe.addOperator("÷")
         countOnMe.addNumber("3")
 
         countOnMe.buttonEqualTaped()
@@ -63,7 +63,7 @@ class CountOnMeTests: XCTestCase {
     func testGiven10divedBy3_WhenResertButtonPressed_ThenResultIs0() {
         countOnMe.addNumber("10")
 
-        countOnMe.addOperator("/")
+        countOnMe.addOperator("÷")
         countOnMe.addNumber("3")
         countOnMe.buttonEqualTaped()
         countOnMe.resetCalcul()
@@ -113,7 +113,7 @@ class CountOnMeTests: XCTestCase {
 
         countOnMe.addOperator("x")
         countOnMe.addNumber("3")
-        countOnMe.addOperator("/")
+        countOnMe.addOperator("÷")
         countOnMe.addNumber("2")
 
         countOnMe.buttonEqualTaped()
@@ -126,9 +126,9 @@ class CountOnMeTests: XCTestCase {
         countOnMe.addNumber("2")
         countOnMe.buttonEqualTaped()
 
-        countOnMe.addOperator("/")
+        countOnMe.addOperator("÷")
 
-        XCTAssertEqual(countOnMe.operation, "4.0 / ")
+        XCTAssertEqual(countOnMe.operation, "4.0 ÷ ")
     }
     // MARK: - Notification Test
 
@@ -153,7 +153,7 @@ class CountOnMeTests: XCTestCase {
     func testGivenFirstElementIs10_WhenDiviseByNil_ThenErrorMessageShouldAppear() {
         countOnMe.addNumber("10")
 
-        countOnMe.addOperator("/")
+        countOnMe.addOperator("÷")
         countOnMe.buttonEqualTaped()
 
         XCTAssertNotEqual(countOnMe.errorMessage, "")
@@ -169,16 +169,16 @@ class CountOnMeTests: XCTestCase {
 
     func testGiven10Divided_WhenAddDivideSign_ThenErrorMessageShouldAppear() {
         countOnMe.addNumber("10")
-        countOnMe.addOperator("/")
+        countOnMe.addOperator("÷")
 
-        countOnMe.addOperator("/")
+        countOnMe.addOperator("÷")
 
         XCTAssertNotEqual(countOnMe.errorMessage, "")
     }
 
     func testGiven10Divided_WhenAdd0_ThenErrorMessageShouldAppear() {
         countOnMe.addNumber("10")
-        countOnMe.addOperator("/")
+        countOnMe.addOperator("÷")
 
         countOnMe.addNumber("0")
 

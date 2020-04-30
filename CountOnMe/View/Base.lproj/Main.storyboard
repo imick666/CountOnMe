@@ -54,7 +54,7 @@
                                                             <constraint firstAttribute="width" secondItem="hMx-zA-Tza" secondAttribute="height" multiplier="1:1" id="wKe-Lu-GeT"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                        <state key="normal" title="/">
+                                                        <state key="normal" title="÷">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
