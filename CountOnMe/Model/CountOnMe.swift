@@ -17,6 +17,7 @@ extension Double {
         return ((self * 100).rounded() / 100)
     }
 }
+
 class CountOnMe {
     // MARK: - Properties
 
@@ -119,11 +120,7 @@ class CountOnMe {
         while finalResult.contains("x") || finalResult.contains("÷") {
             guard let index = finalResult.firstIndex(where: { $0 == "x" || $0 == "÷" }) else { return } //Que veut dire "$0"???!!!
 
-            guard let left = Double(finalResult[index - 1]) else { return }
-            let operand = finalResult[index]
-            guard let right = Double(finalResult[index + 1]) else { return }
-
-            let result = calculate(left, operand, right)
+            let result = calculate(finalResult[index - 1], finalResult[index], finalResult[index + 1])
 
             finalResult[index] = "\(result.roundedWithTowDecimal())"
             finalResult.remove(at: index + 1)
@@ -132,11 +129,8 @@ class CountOnMe {
 
         //calcule the reste
         while finalResult.count > 1 {
-            guard let left = Double(finalResult[0]) else { return }
-            let operand = finalResult[1]
-            guard let right = Double(finalResult[2]) else { return }
 
-            let result = calculate(left, operand, right)
+            let result = calculate(finalResult[0], finalResult[1], finalResult[2])
 
             finalResult = Array(finalResult.dropFirst(3))
             finalResult.insert("\(result.roundedWithTowDecimal())", at: 0)
@@ -145,7 +139,12 @@ class CountOnMe {
         operation.append(" = \(finalResult.first!)")
     }
 
-    private func calculate(_ left: Double, _ operand: String, _ right: Double) -> Double {
+    // make calcules
+    private func calculate(_ left: String, _ operand: String, _ right: String) -> Double {
+        guard let left = Double(left) else { return Double() } //qu'est ce qu'il se passerait en cas d'erreur???
+        let operand = operand
+        guard let right = Double(right) else { return Double() }
+
         switch operand {
         case "+": return left + right
         case "-": return left - right
@@ -155,3 +154,12 @@ class CountOnMe {
         }
     }
 }
+
+/*
+ QUESTIONS :
+ 
+ Ligne 37 : Je ne comprend pas la closure
+ Ligne 120 : Que signifie "$0" ?
+ ligne 142 : Que se passerait-il en cas d'erreur en utlisant "return Double()"?
+ 
+*/

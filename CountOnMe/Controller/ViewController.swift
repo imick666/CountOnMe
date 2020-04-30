@@ -84,6 +84,7 @@ class ViewController: UIViewController {
     // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard var numberText = sender.title(for: .normal) else { return }
+        //convert "," in "."
         if numberText == "," {
             numberText = "."
         }
