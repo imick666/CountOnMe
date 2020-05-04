@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var calculLabel: UILabel!
+    @IBOutlet weak var calculTextView: RoundedTextView!
     @IBOutlet var buttonStyle: [RoundButton]!
     @IBOutlet weak var resetButton: RoundButton!
 
@@ -31,14 +31,14 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         countOnMeModel.operation = "0"
-        roundedButtonUpdate()
+        setupRoundedInterface()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
         coordinator.animate(alongsideTransition: { (_) in
-            self.roundedButtonUpdate()
+            self.setupRoundedInterface()
         })
     }
     // MARK: - Notifications Selectors
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
             let format = operation.replacingOccurrences(of: ".0", with: "")
             return format.replacingOccurrences(of: ".", with: ",")
         }
-        calculLabel.text = currentCalcul
+        calculTextView.text = currentCalcul
 
         if currentCalcul == "0" {
             resetButton.setTitle("AC", for: .normal)
@@ -66,10 +66,11 @@ class ViewController: UIViewController {
     // MARK: - Privaet Methodes
 
     //Update rounded button Style
-    private func roundedButtonUpdate() {
+    private func setupRoundedInterface() {
         for button in buttonStyle {
             button.setUpButton()
         }
+        calculTextView.roundedTextView()
     }
 
     //create notification

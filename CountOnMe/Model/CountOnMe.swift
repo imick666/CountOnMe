@@ -5,7 +5,7 @@
 //  Created by mickael ruzel on 03/04/2020.
 //  Copyright © 2020 Vincent Saluzzo. All rights reserved.
 //
-//swiftlint:disable line_length
+
 import Foundation
 extension NSNotification.Name {
     static let currentCalcul = Notification.Name("currentCalcul")
