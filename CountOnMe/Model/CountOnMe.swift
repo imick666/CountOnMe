@@ -39,6 +39,11 @@ class CountOnMe {
     }
 
     // Error check computed variables
+    private var dotCanBeAdd: Bool {
+        guard let lastElement = elements.last else { return true }
+        return !(lastElement.contains("."))
+    }
+
     private var expressionIsCorrect: Bool {
         return elements.last != "+" && elements.last != "-"
             && elements.last != "÷" && elements.last != "x"
@@ -77,7 +82,7 @@ class CountOnMe {
     func addOperator(_ operatorToAdd: String) {
         guard operation != "0" else { return }
         checkIfOperatorCanBeAdd {
-            operation.append(" " + operatorToAdd + " ")
+            operation.append(" \(operatorToAdd) ")
         }
     }
 
@@ -86,10 +91,13 @@ class CountOnMe {
             operation = "0"
         } else if expressionHaveResult || calculIsNull {
             operation = ""
+        } else if number == "." && !dotCanBeAdd {
+            return
         }
-        if elements.last == "÷" && number == "0" {
+        guard !(elements.last == "÷" && number == "0")  else {
             errorMessage = "Vous ne pouvez pas diviser par 0"
             resetCalcul()
+            return
         }
         operation.append(number)
     }
@@ -120,7 +128,7 @@ class CountOnMe {
 
         //multiplication and division priority
         while finalResult.contains("x") || finalResult.contains("÷") {
-            guard let index = finalResult.firstIndex(where: { $0 == "x" || $0 == "÷" }) else { return } //Que veut dire "$0"???!!!
+            guard let index = finalResult.firstIndex(where: { $0 == "x" || $0 == "÷" }) else { return }
 
             let result = calculate(finalResult[index - 1], finalResult[index], finalResult[index + 1])
 
@@ -143,7 +151,7 @@ class CountOnMe {
 
     // make calcules
     private func calculate(_ left: String, _ operand: String, _ right: String) -> Double {
-        guard let left = Double(left) else { return Double() } //qu'est ce qu'il se passerait en cas d'erreur???
+        guard let left = Double(left) else { return Double() }
         let operand = operand
         guard let right = Double(right) else { return Double() }
 
@@ -156,12 +164,3 @@ class CountOnMe {
         }
     }
 }
-
-/*
- QUESTIONS :
- 
- Ligne 37 : Je ne comprend pas la closure
- Ligne 120 : Que signifie "$0" ?
- ligne 142 : Que se passerait-il en cas d'erreur en utlisant "return Double()"?
- 
-*/

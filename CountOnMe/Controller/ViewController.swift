@@ -59,10 +59,8 @@ class ViewController: UIViewController {
     }
 
     @objc func errorMessage() {
-        var errorMessage: String {
-            return countOnMeModel.errorMessage
-        }
-        AlertViewController.shared.showAlertController(message: errorMessage, viewController: self)
+        let errorMessage = countOnMeModel.errorMessage
+        CustomAlertViewController.shared.showAlertController(message: errorMessage, viewController: self)
     }
 
     // MARK: - Privaet Methodes

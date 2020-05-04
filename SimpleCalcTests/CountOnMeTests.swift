@@ -19,6 +19,15 @@ class CountOnMeTests: XCTestCase {
         countOnMe = CountOnMe()
     }
 
+    func testGiven2Dot_WhenAddDot_ThenNothingShouldBeAdd() {
+        countOnMe.addNumber("2")
+        countOnMe.addNumber(".")
+
+        countOnMe.addNumber(".")
+
+        XCTAssertEqual(countOnMe.elements.last!, "2.")
+    }
+
     func testGiven3_WhenSub3_ThenResultIs0() {
         countOnMe.addNumber("3")
 

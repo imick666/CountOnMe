@@ -8,10 +8,10 @@
 
 import UIKit
 
-class AlertViewController: NSObject {
+class CustomAlertViewController {
 
-    static let shared = AlertViewController()
-    private override init() {}
+    static let shared = CustomAlertViewController()
+    private init() {}
 
     func showAlertController (message: String, viewController: UIViewController) {
         let alertVC = UIAlertController(title: "Zéro!", message: message, preferredStyle: .alert)
