@@ -32,8 +32,17 @@ Count On Me is a calcutor. (Thank's captain obvious ^^)
 - Work on existing project
 - Write unit test
 - Use NotificationCenter
+- Use alerts
+- Bonus:
+    - In writting this reamde, I decided to automate screenshots. So I learn "Fastlane / snapshot" for the occasion ^^
 
 ## Screenshots
 
+<div float="left">
+    <img src="./assets/screenshots/Screenshot1.png" width="275" />
+    <img src="./assets/screenshots/Screenshot2.png" width="275" />
+    <img src="./assets/screenshots/Screenshot3.png" width="275" />
+    <img src="./assets/screenshots/Screenshot4.png" height="275" />
+</div>
 
 
